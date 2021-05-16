@@ -1,18 +1,22 @@
-import logo from './logo.svg';
-import Nav from './components/Nav.js';
-import Hero from './components/Hero.js';
-
-
 import './App.css';
-
+import About from './components/about/About';
+import Contact from './components/contact/Contact';
+import Footer from './components/Footer';
+import Gallery from './components/gallery/Gallery';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <div className="App">
-      <main>
-        <Nav />
-        <Hero />
-      </main>  
+        
+        <main>
+           <Header/>
+           <Gallery/>
+           <About/>
+           <Contact/>
+           <Footer/>
+        </main>
+
     </div>
   );
 }
