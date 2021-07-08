@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameSlow = () => {
+const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-showcase-hero-image-mobile--A17A3CFD-1001-41F0-B69A-8440E534AC7B.png", types=["Adventure", "Narrative"], trailer="https://www.youtube.com/embed/MF46EPlngic?rel=0&amp;autoplay=1", screenShots=[], store="Viveport") => {
     return (
         <div>
              <aside id="other_section">                      
@@ -31,7 +31,7 @@ const GameSlow = () => {
                         </div>
                         <div className="right-side">
                         <p className="choose-available">Choose Available Platform:</p>
-                        <div className="listeners-active">Viveport <img className="path-B1fNjY" alt="" src="assets/img/desktop--game-showcase-path-1E4BF3EA-EE4B-4661-8E25-688789989909@2x.png"/></div>
+                        <div className="listeners-active">{store} <img className="path-B1fNjY" alt="" src="assets/img/desktop--game-showcase-path-1E4BF3EA-EE4B-4661-8E25-688789989909@2x.png"/></div>
                         </div>
                     </div>
                     </div>	
@@ -79,4 +79,4 @@ const GameSlow = () => {
     );
 };
 
-export default GameSlow;
+export default GameShow;

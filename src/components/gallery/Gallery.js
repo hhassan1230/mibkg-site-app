@@ -1,6 +1,6 @@
 import React from 'react';
 import GameGallery from './GameGallery';
-import GameSlow from './GameSlow';
+import GameShow from './GameShow';
 import MerchGallery from './MerchGallery';
 
 const Gallery = () => {
@@ -19,7 +19,7 @@ const Gallery = () => {
                      
                      <GameGallery/>
                      <MerchGallery/>
-                     <GameSlow/>
+                     <GameShow/>
                  
                 
                 </div>

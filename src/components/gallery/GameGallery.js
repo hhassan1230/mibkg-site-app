@@ -31,20 +31,22 @@ const GameGallery = () => {
                             </div>
                             </div>
                         </a>
+                        <a href="desktopgameshowcase.html">
                         <div className="group-copy-horizontal smart_layers">
-                            <img className="logo-oculus-store-group" alt="" src="assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png" />
+                            <img className="logo-oculus-store-group" alt="" src="assets/img/DLAV2.png" />
                             <div className="main_container_horizontal">
                             <div className="logo-group_horizontal"></div>
                             </div>
                         </div>
+                        </a>
                         <div className="group-copy-2-horizontal smart_layers">
-                            <img className="logo-oculus_store_copy-2" alt="" src="assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png" />
+                            <img className="logo-oculus_store_copy-2" alt="" src="assets/img/KanyeNestV1.png" />
                             <div className="main_container_horizontal">
                             <div className="logo_copy-2"></div>
                             </div>
                         </div>
                         <div className="group-copy-3-horizontal smart_layers">
-                            <img className="logo-oculus_store-copy-3" alt="" src="assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png" />
+                            <img className="logo-oculus_store-copy-3" alt="" src="assets/img/potionpanic.png" />
                             <div className="main_container_horizontal">
                             <div className="logo-copy-3"></div>
                             </div>
