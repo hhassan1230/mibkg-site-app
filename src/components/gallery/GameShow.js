@@ -11,7 +11,7 @@ const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-show
                         <img alt="" src="assets/img/desktop--game-showcase-rectangle-copy-4-3044EBF1-10A5-4282-A799-AE28C92DD45F.jpg" className="hover-up"/>
                         <img alt="" src="assets/img/desktop--game-showcase-rectangle-copy-5-BE34638F-A368-41E6-A813-627677531F78.jpg" className="hover-up"/>
                         <div id="youtube">
-                        <img alt="" src="assets/img/mobile-game-showcase-hero-image-mobile--A17A3CFD-1001-41F0-B69A-8440E534AC7B.png"/>
+                        <img alt="" src="https://i9.ytimg.com/vi_webp/MF46EPlngic/mqdefault.webp?v=5ea4fc8c&sqp=CIDc0IkG&rs=AOn4CLBqYNNz07Yf3ZgKPcmfDn3AJEi_2Q"/>
                         <div className="nounplay3318513-KOsP6k"></div>
                         </div>
                         

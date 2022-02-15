@@ -1,4 +1,5 @@
 import React from 'react';
+import Game from './Game';
 
 const GameGallery = () => {
     return (
@@ -23,22 +24,17 @@ const GameGallery = () => {
                     <div className="rectangle bp2-animate-enter4" show-on-scroll></div>
                     <div className="main_container_horizontal">
                         <div className="game-card-horizontal bp2-animate-enter5" show-on-scroll>
-                        <a href="desktopgameshowcase.html">
-                            <div className="group-card-horizontal smart_layers">
-                            <img className="logo-oculus-store-horizontal" alt="" src="assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png" />
-                            <div className="main_container_horizontal">
-                                <div className="logo_n-horizontal"></div>
-                            </div>
-                            </div>
-                        </a>
-                        <a href="desktopgameshowcase.html">
-                        <div className="group-copy-horizontal smart_layers">
-                            <img className="logo-oculus-store-group" alt="" src="assets/img/DLAV2.png" />
-                            <div className="main_container_horizontal">
-                            <div className="logo-group_horizontal"></div>
-                            </div>
-                        </div>
-                        </a>
+                        <Game 
+                            name={`MusuemMultiverse`} 
+                            sideLogo={`assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png`}
+                            key={`MusuemMultiverse`}
+                        />
+                        <Game 
+                            name={`DontLookAwayVR`} 
+                            sideLogo={`assets/img/DLAV2.png`}
+                            key={`DontLookAwayVR`}
+                        />
+
                         <div className="group-copy-2-horizontal smart_layers">
                             <img className="logo-oculus_store_copy-2" alt="" src="assets/img/KanyeNestV1.png" />
                             <div className="main_container_horizontal">

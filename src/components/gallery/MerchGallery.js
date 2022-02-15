@@ -1,4 +1,5 @@
 import React from 'react';
+import Merch from './Merch';
 
 const MerchGallery = () => {
     return (
@@ -15,46 +16,46 @@ const MerchGallery = () => {
                         </div>
                         
                         <div className="four_prodect">
-                        <div className="prodect_card">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card mobile-hide">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card mobile-hide">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card mobile-hide">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
-                        <div className="prodect_card mobile-hide">
-                            <img alt="" src="assets/img/prodect-simple.png" className="prodect_img"/>
-                            <div className="prodect_name">T-shirt</div>
-                            <div className="proect_price">$15.00</div>
-                        </div>
+                        <Merch
+                            price='$35.00'
+                            img='assets/img/t-shirt-v4.png'
+                            product='T-shirt'
+                        />
+                        <Merch
+                            price='$35.00'
+                            img='assets/img/t-shirt-1-tiny.png'
+                            product='T-shirt'
+                        />
+                        <Merch
+                            price='$35.00'
+                            img='assets/img/t-shirt-v6.png'
+                            product='T-shirt'
+                        />
+                        <Merch
+                            price='$35.00'
+                            img='assets/img/t-shirt-v7.png'
+                            product='T-shirt'
+                        />
+                        <Merch
+                            price='$530.00'
+                            img='assets/img/Kracelet.jpeg'
+                            product='Watch'
+                        />
+                        <Merch
+                            price='$250.00'
+                            img='assets/img/IMG-WA0001.jpeg'
+                            product='Sneakers'
+                        />
+                        <Merch
+                            price='$250.00'
+                            img='assets/img/IMG-WA0002.jpeg'
+                            product='Sneakers'
+                        />
+                        <Merch
+                            price='$250.00'
+                            img='assets/img/IMG-WA0003.jpeg'
+                            product='Sneakers'
+                        />
                         </div>
                     </div>
             </aside>

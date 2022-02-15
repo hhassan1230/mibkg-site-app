@@ -2962,7 +2962,8 @@ transform: translate(0,0);}
 	display:none;
 }
 .overlay-C61RwL {
-    background-color: rgba(36,16,49,0.625);
+    /* background-color: rgba(36,16,49,0.625); */
+	background-color: transparent;
     height: calc(100.00% - 2122px);
     left: 242px;
     position: absolute;
