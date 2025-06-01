@@ -199,3 +199,9 @@ input:focus {
 .listeners-active-click * {
   cursor: pointer;
 }
+
+.listeners-active a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+}

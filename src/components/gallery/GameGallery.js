@@ -25,7 +25,7 @@ const GameGallery = () => {
                     <div className="main_container_horizontal">
                         <div className="game-card-horizontal bp2-animate-enter5" show-on-scroll>
                         <Game 
-                            name={`MusuemMultiverse`} 
+                            name={`MuseumMultiverse`} 
                             sideLogo={`assets/img/desktop--mmlogo-oculusstore-1900F860-0654-4595-8AF5-6DD53DDDAE84@2x.png`}
                             key={`MusuemMultiverse`}
                         />

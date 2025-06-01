@@ -1,17 +1,31 @@
 import React from 'react';
 
-const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-showcase-hero-image-mobile--A17A3CFD-1001-41F0-B69A-8440E534AC7B.png", types=["Adventure", "Narrative"], trailer="https://www.youtube.com/embed/MF46EPlngic?rel=0&amp;autoplay=1", screenShots=[], store="Viveport") => {
-    return (
+const GameShow = ({
+    title="", 
+    description="", 
+    imgage="", 
+    types=["", ""], 
+    trailer="", 
+    screenShots=[], 
+    stores=[],
+    isVR=Boolean,
+    players="",
+}) => {    
+return (
         <div>
              <aside id="other_section">                      
                     <div className="other_contant">
                     <div className="bottom_move">
                     <div className="other_img_grid">
-                        <img alt="" src="assets/img/mobile-game-showcase-mm-bg-image-1C1E03A4-6BF7-4E12-8FE3-84EF83D78B34.jpg" className="hover-up"/>
-                        <img alt="" src="assets/img/desktop--game-showcase-rectangle-copy-4-3044EBF1-10A5-4282-A799-AE28C92DD45F.jpg" className="hover-up"/>
-                        <img alt="" src="assets/img/desktop--game-showcase-rectangle-copy-5-BE34638F-A368-41E6-A813-627677531F78.jpg" className="hover-up"/>
+                        {screenShots.map((screenShot, index) => 
+                            <div key={index}>
+                                <div>
+                                    <img alt="" src={screenShot} className="hover-up"/> {/* iterate over these to get screemshots */}
+                                </div>
+                            </div>
+                        )}
                         <div id="youtube">
-                        <img alt="" src="https://i9.ytimg.com/vi_webp/MF46EPlngic/mqdefault.webp?v=5ea4fc8c&sqp=CIDc0IkG&rs=AOn4CLBqYNNz07Yf3ZgKPcmfDn3AJEi_2Q"/>
+                        <img alt="" src="https://i9.ytimg.com/vi_webp/MF46EPlngic/mqdefault.webp?v=5ea4fc8c&sqp=CIDc0IkG&rs=AOn4CLBqYNNz07Yf3ZgKPcmfDn3AJEi_2Q"/> {/* Replace this with another thumbnail locally */}
                         <div className="nounplay3318513-KOsP6k"></div>
                         </div>
                         
@@ -20,18 +34,23 @@ const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-show
                     <div className="text_two_part">
                         <div className="left-side">
                         <span className="about-title">About the Game</span>
-                        <span className="lable bg-purpul">Adventure</span>
-                        <span className="lable bg-light-purpul">Narrative</span>
+                        <span className="lable bg-purpul">{types[0]}</span>
+                        <span className="lable bg-light-purpul">{types[1]}</span>
                         
                         <p className="the-webby">
-                            The Webby-nominated Museum Multiverse is a virtual reality platformer. This perspective-changing experience
-                            chronicles JR's adventures, a kid who has mysteriously awoken in an abandoned museum. He must traverse the
-                            various worlds within the art pieces within the depths of the cursed museum to find a way to escape.
-                            </p>
+                            {description}
+                        </p>
                         </div>
                         <div className="right-side">
                         <p className="choose-available">Choose Available Platform:</p>
-                        <div className="listeners-active">{store} <img className="path-B1fNjY" alt="" src="assets/img/desktop--game-showcase-path-1E4BF3EA-EE4B-4661-8E25-688789989909@2x.png"/></div>
+                        {stores.map((store, index) => 
+                            <div key={index}>
+                                <div className="listeners-active">
+                                    <a target='_blank' rel="noreferrer" href={stores[index].link}>{stores[index].name}</a><img className="path-B1fNjY" alt="" src="assets/img/desktop--game-showcase-path-1E4BF3EA-EE4B-4661-8E25-688789989909@2x.png"/>
+                                </div>
+                                <br/>
+                            </div>
+                        )}
                         </div>
                     </div>
                     </div>	
@@ -52,12 +71,18 @@ const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-show
                     <div className="group-3-HhOyb4">
                     <div className="group-5-AxPXiJ">
                     <div className="nounvr2771726-6Z6YmS">
-                        <img className="shape-tBF58u" alt="" src="assets/img/desktop--game-showcase-shape-B382B0A8-43A4-49F3-A7F0-63B7A5646875@2x.png"/>
-                        <img className="path-tBF58u" alt="" src="assets/img/desktop--game-showcase-path-4DFBA9FD-1B74-4DBE-AFFD-EC6F67C6026E@2x.png"/>
-                        <img className="path-9XKmEx" alt="" src="assets/img/desktop--game-showcase-path-742AA8C3-49D2-474C-851C-E9CBBC04BE61@2x.png"/>
-                        <img className="path-QY56vo" alt="" src="assets/img/desktop--game-showcase-path-742AA8C3-49D2-474C-851C-E9CBBC04BE61@2x.png"/>
+                        { /* Need to work on types here - Web, VR, AR, Console */
+                            isVR ? 
+                            <div>
+                                <img className="shape-tBF58u" alt="" src="assets/img/desktop--game-showcase-shape-B382B0A8-43A4-49F3-A7F0-63B7A5646875@2x.png"/>
+                                <img className="path-tBF58u" alt="" src="assets/img/desktop--game-showcase-path-4DFBA9FD-1B74-4DBE-AFFD-EC6F67C6026E@2x.png"/>
+                                <img className="path-9XKmEx" alt="" src="assets/img/desktop--game-showcase-path-742AA8C3-49D2-474C-851C-E9CBBC04BE61@2x.png"/>
+                                <img className="path-QY56vo" alt="" src="assets/img/desktop--game-showcase-path-742AA8C3-49D2-474C-851C-E9CBBC04BE61@2x.png"/>
+                            </div>
+                            : ""
+                        }
                     </div>
-                    <div className="vr-enable-6Z6YmS">VR Enable</div>
+                    <div className="vr-enable-6Z6YmS">{isVR ? "VR Enable" : ""}</div>
                     </div>
                     <div className="group-7-AxPXiJ">
                     <div className="noun-user3662623-Rzrxl3">
@@ -70,7 +95,7 @@ const GameShow = (title="Museum Multiverse", imgage="assets/img/mobile-game-show
                         </div>
                         </div>
                     </div>
-                    <div className="x1-player-Rzrxl3">1 Player</div>
+                    <div className="x1-player-Rzrxl3">{players}</div>
                     </div>
                     </div>
                     </div>
