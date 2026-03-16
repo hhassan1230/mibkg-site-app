@@ -1,0 +1,86 @@
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
+import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
+
+export function Dialog({ open, onOpenChange, children }) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e) {
+      if (e.key === "Escape") onOpenChange(false);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onOpenChange]);
+
+  if (!open) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true">
+      <div
+        className="fixed inset-0 bg-black/80 animate-in fade-in"
+        onClick={() => onOpenChange(false)}
+      />
+      {children}
+    </div>,
+    document.body,
+  );
+}
+
+export function DialogContent({ className, children, onClose, ...props }) {
+  return (
+    <div
+      className={cn(
+        "fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-lg border border-border bg-card p-6 shadow-lg",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+          aria-label="Close"
+        >
+          <X className="h-4 w-4 text-foreground" />
+        </button>
+      )}
+    </div>
+  );
+}
+
+export function DialogHeader({ className, ...props }) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col space-y-1.5 text-center sm:text-left",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function DialogTitle({ className, ...props }) {
+  return (
+    <h2
+      className={cn(
+        "text-lg font-semibold leading-none tracking-tight text-foreground",
+        className,
+      )}
+      {...props}
+    />
+  );
+}

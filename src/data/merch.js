@@ -1,0 +1,58 @@
+export const merch = [
+  {
+    id: "tshirt-v4",
+    product: "T-shirt",
+    price: "$35.00",
+    image: "/assets/img/t-shirt-v4.png",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "tshirt-1",
+    product: "T-shirt",
+    price: "$35.00",
+    image: "/assets/img/t-shirt-1-tiny.png",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "tshirt-v6",
+    product: "T-shirt",
+    price: "$35.00",
+    image: "/assets/img/t-shirt-v6.png",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "tshirt-v7",
+    product: "T-shirt",
+    price: "$35.00",
+    image: "/assets/img/t-shirt-v7.png",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "watch-1",
+    product: "Watch",
+    price: "$530.00",
+    image: "/assets/img/Kracelet.jpeg",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "sneakers-1",
+    product: "Sneakers",
+    price: "$250.00",
+    image: "/assets/img/IMG-WA0001.jpeg",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "sneakers-2",
+    product: "Sneakers",
+    price: "$250.00",
+    image: "/assets/img/IMG-WA0002.jpeg",
+    url: "[PLACEHOLDER_URL]",
+  },
+  {
+    id: "sneakers-3",
+    product: "Sneakers",
+    price: "$250.00",
+    image: "/assets/img/IMG-WA0003.jpeg",
+    url: "[PLACEHOLDER_URL]",
+  },
+];

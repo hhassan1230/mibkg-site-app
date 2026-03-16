@@ -1,0 +1,8 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^npm install -D tailwindcss @tailwindcss/vite vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom eslint-plugin-react-hooks eslint-plugin-react-refresh \"@eslint/js@\\^9\\.0\\.0\"$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
+}
