@@ -8,6 +8,12 @@ const footerLinks = [
   { label: "Contact", to: "/#contact" },
 ];
 
+const legalLinks = [
+  { label: "Privacy Policy", to: "/privacy" },
+  { label: "Terms & Conditions", to: "/terms" },
+  { label: "Legal", to: "/legal" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-card border-t border-border">
@@ -20,7 +26,8 @@ export default function Footer() {
               className="h-8"
             />
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Made in Brooklyn Games
+              All rights reserved. &copy; {new Date().getFullYear()} Made in
+              Brooklyn Games
             </p>
           </div>
 
@@ -38,9 +45,16 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end gap-4">
             <SocialLinks />
-            <div className="flex gap-4 text-xs text-muted-foreground">
-              <span>Privacy Policy</span>
-              <span>Terms &amp; Conditions</span>
+            <div className="flex gap-4 text-xs">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

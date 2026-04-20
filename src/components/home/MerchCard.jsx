@@ -1,8 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function MerchCard({ item }) {
+  const hasUrl = item.url && item.url !== "#";
+
   return (
     <Card className="group overflow-hidden bg-card/80 border-border hover:border-primary/50 transition-colors duration-300">
       <CardContent className="p-0">
@@ -21,17 +23,23 @@ export default function MerchCard({ item }) {
           <h3 className="font-medium text-foreground text-sm">
             {item.product}
           </h3>
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "w-full",
-            )}
-          >
-            Buy Now
-          </a>
+          {hasUrl ? (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "w-full",
+              )}
+            >
+              Buy Now
+            </a>
+          ) : (
+            <Button variant="outline" size="sm" className="w-full" disabled>
+              Coming Soon
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

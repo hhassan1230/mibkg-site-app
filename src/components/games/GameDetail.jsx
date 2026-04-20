@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, ExternalLink } from "lucide-react";
+import { ArrowLeft, Play, ExternalLink, Gamepad2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ScrollReveal } from "@/hooks/useScrollReveal";
 import { cn } from "@/lib/utils";
+import PanoramaViewer from "./PanoramaViewer";
 
 export default function GameDetail({ game }) {
   const [trailerOpen, setTrailerOpen] = useState(false);
+
+  // Extract YouTube video ID from embed URL for thumbnail
+  const trailerId = game.trailer?.match(/embed\/([^?]+)/)?.[1];
+  const trailerThumb = trailerId
+    ? `https://img.youtube.com/vi/${trailerId}/hqdefault.jpg`
+    : null;
 
   return (
     <div className="min-h-screen">
@@ -18,7 +25,7 @@ export default function GameDetail({ game }) {
         style={{
           backgroundImage: game.heroImage
             ? `url(${game.heroImage})`
-            : "url(/assets/img/desktop--game-showcase-bg-image--02130E08-A93A-4018-8141-EB8B923E2D59.jpg)",
+            : undefined,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -52,11 +59,17 @@ export default function GameDetail({ game }) {
               >
                 {/* Game logo on spine */}
                 <div className="py-6 px-3 flex flex-col items-center gap-4">
-                  <img
-                    src={game.logo}
-                    alt={game.title}
-                    className="w-[88px] h-auto drop-shadow-md"
-                  />
+                  {game.logo ? (
+                    <img
+                      src={game.logo}
+                      alt={game.title}
+                      className="w-[88px] h-auto drop-shadow-md"
+                    />
+                  ) : (
+                    <span className="text-sm font-black text-[#1A1925] text-center uppercase tracking-wide">
+                      {game.title}
+                    </span>
+                  )}
                 </div>
 
                 {/* Spine info */}
@@ -120,6 +133,11 @@ export default function GameDetail({ game }) {
                     {type}
                   </Badge>
                 ))}
+                {game.rating && (
+                  <Badge className="bg-accent text-accent-foreground">
+                    Rated: {game.rating}
+                  </Badge>
+                )}
                 {game.platforms?.map((platform) => (
                   <Badge
                     key={platform}
@@ -131,10 +149,53 @@ export default function GameDetail({ game }) {
               </div>
             </ScrollReveal>
 
-            {/* Screenshots grid — like thumbnails on the back of a game box */}
-            {game.screenshots.length > 0 && (
+            {/* Media gallery — screenshots + trailer + panoramas */}
+            {(game.screenshots.length > 0 ||
+              game.trailer ||
+              game.coverImage ||
+              game.panoramas?.length > 0) && (
               <ScrollReveal delay={100}>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+                  {/* Trailer — first slot, spans full width on small grids when solo */}
+                  {game.trailer && (
+                    <button
+                      onClick={() => setTrailerOpen(true)}
+                      className={`group/trailer relative overflow-hidden rounded border-2 border-border hover:border-primary transition-colors cursor-pointer ${
+                        game.screenshots.length === 0
+                          ? "col-span-2 sm:col-span-2"
+                          : ""
+                      }`}
+                    >
+                      <img
+                        src={
+                          trailerThumb || game.screenshots[0] || game.heroImage
+                        }
+                        alt="Watch trailer"
+                        className="w-full aspect-video object-cover brightness-50 group-hover/trailer:brightness-75 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center group-hover/trailer:scale-110 transition-transform shadow-lg">
+                          <Play className="h-6 w-6 text-primary-foreground fill-current ml-0.5" />
+                        </div>
+                      </div>
+                      <span className="absolute bottom-2 left-0 right-0 text-center text-xs font-semibold text-white drop-shadow-md">
+                        Watch Trailer
+                      </span>
+                    </button>
+                  )}
+
+                  {/* Cover image — shown right after trailer when present */}
+                  {game.coverImage && (
+                    <div className="group/shot relative overflow-hidden rounded border-2 border-border hover:border-primary transition-colors">
+                      <img
+                        src={game.coverImage}
+                        alt={`${game.title} cover`}
+                        className="w-full aspect-video object-cover group-hover/shot:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+
+                  {/* Screenshots */}
                   {game.screenshots.map((src, i) => (
                     <div
                       key={i}
@@ -148,30 +209,26 @@ export default function GameDetail({ game }) {
                     </div>
                   ))}
 
-                  {/* Trailer thumbnail — like the video preview on a box */}
-                  {game.trailer && (
-                    <button
-                      onClick={() => setTrailerOpen(true)}
-                      className="group/trailer relative overflow-hidden rounded border-2 border-border hover:border-primary transition-colors cursor-pointer"
-                    >
-                      <img
-                        src={
-                          game.screenshots[0] ||
-                          "/assets/img/desktop--game-showcase-bg-image--02130E08-A93A-4018-8141-EB8B923E2D59.jpg"
-                        }
-                        alt="Watch trailer"
-                        className="w-full aspect-video object-cover brightness-50 group-hover/trailer:brightness-75 transition-all duration-300"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center group-hover/trailer:scale-110 transition-transform">
-                          <Play className="h-5 w-5 text-primary-foreground fill-current ml-0.5" />
-                        </div>
+                  {/* 360° Panoramas — span full grid width */}
+                  {game.panoramas?.map((pano, i) => {
+                    const panoSrc = typeof pano === "string" ? pano : pano.src;
+                    const panoType =
+                      typeof pano === "string"
+                        ? "equirectangular"
+                        : pano.type || "equirectangular";
+                    return (
+                      <div
+                        key={`pano-${i}`}
+                        className="col-span-2 sm:col-span-3"
+                      >
+                        <PanoramaViewer
+                          src={panoSrc}
+                          type={panoType}
+                          alt={`${game.title} 360° view ${i + 1}`}
+                        />
                       </div>
-                      <span className="absolute bottom-2 left-0 right-0 text-center text-xs font-medium text-white">
-                        Watch Trailer
-                      </span>
-                    </button>
-                  )}
+                    );
+                  })}
                 </div>
               </ScrollReveal>
             )}
@@ -204,6 +261,25 @@ export default function GameDetail({ game }) {
                     Choose Available Platform:
                   </h2>
                   <div className="h-[2px] w-16 bg-primary mb-4" />
+                  {(() => {
+                    const playStore = game.stores.find((s) =>
+                      ["newgrounds"].includes(s.name.toLowerCase()),
+                    );
+                    return playStore ? (
+                      <a
+                        href={playStore.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "w-full justify-center gap-2 text-sm font-bold mb-4 bg-green-600 hover:bg-green-500 text-white border-green-600",
+                          buttonVariants({ size: "sm" }),
+                        )}
+                      >
+                        <Gamepad2 className="h-4 w-4" />
+                        Play Now on {playStore.name}
+                      </a>
+                    ) : null;
+                  })()}
                   {game.stores.length > 0 ? (
                     <div className="space-y-2">
                       {game.stores.map((store) => (
