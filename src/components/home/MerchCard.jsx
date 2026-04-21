@@ -4,6 +4,10 @@ import { cn } from "@/lib/utils";
 
 export default function MerchCard({ item }) {
   const hasUrl = item.url && item.url !== "#";
+  const badgeLabel = hasUrl ? item.price : "Coming Soon";
+  const badgeClassName = hasUrl
+    ? "bg-primary text-primary-foreground"
+    : "bg-secondary text-secondary-foreground";
 
   return (
     <Card className="group overflow-hidden bg-card/80 border-border hover:border-primary/50 transition-colors duration-300">
@@ -15,8 +19,13 @@ export default function MerchCard({ item }) {
             className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
           />
           {/* Price tag */}
-          <span className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-sm">
-            {item.price}
+          <span
+            className={cn(
+              "absolute top-2 right-2 rounded-sm px-2 py-1 text-xs font-bold",
+              badgeClassName,
+            )}
+          >
+            {badgeLabel}
           </span>
         </div>
         <div className="p-4 space-y-3">
